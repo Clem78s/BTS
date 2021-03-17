@@ -1,7 +1,6 @@
 <?php include "header.php";
 $action = $_GET['action'];
 include "base.php";
-// requete pour modif nation
 if ($action == "Modifier") {
     $num = $_GET['num'];
     $req = $monPdo->prepare("select * from nationalite where num = :num");
@@ -10,7 +9,7 @@ if ($action == "Modifier") {
     $req->execute();
     $lesNations = $req->fetch();
 }
-//requete pour avoir les continents
+
 $reqContinent = $monPdo->prepare("select * from continent");
 $reqContinent->setFetchMode(PDO::FETCH_OBJ);
 $reqContinent->execute();
@@ -30,7 +29,6 @@ $lesContinent = $reqContinent->fetchAll();
                     <label for='continent'>Continents</label>
                     <select name="continent" class="form-control">
                         <?php
-                        //liste deroulante des continents
                         foreach ($lesContinent as $continent) {
                             $select = $continent->num == $lesNations->numContinent ? 'selected' : '';
                             echo "<option  value='$continent->num' $select> $continent->libelle </option >";

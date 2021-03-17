@@ -1,7 +1,6 @@
 <?php include "header.php";
 $action= $_GET['action'];
 include "base.php";
-//requete pour modif genre
 if ($action == "Modifier") {
     $num = $_GET['num'];
     $req = $monPdo->prepare("select * from genre where num = :num");

@@ -1,7 +1,6 @@
 <?php include "header.php";
 $action = $_GET['action'];
 include "base.php";
-// requete pour une modif auteur
 if ($action == "Modifier") {
     $num = $_GET['num'];
     $req = $monPdo->prepare("select * from auteur where num = :num");
@@ -31,7 +30,6 @@ $nations=$reqNation->fetchAll();
                     <label for='libelle'>Nationalité</label>
                     <select name="libelle" class="form-control">
                         <?php
-                        //liste deroulante nations
                         foreach ($nations as $nation){
                             $select = $nation->num == $lesAuteurs->numNationalite ? 'selected' : '';
                             echo "<option  value='$nation->num' $select> $nation->libelle </option >";
